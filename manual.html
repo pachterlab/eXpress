@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<!--  Version: Multiflex-5.4 / About                     -->
+<!--  Type:    Design with sidebar                          -->
+<!--  Date:    March 13, 2008                               -->
+<!--  Design:  www.1234.info                                -->
+<!--  License: Fully open source without restrictions.      -->
+<!--           Please keep footer credits with the words    -->
+<!--           "Design by 1234.info". Thank you!            -->
+
+<head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25486066-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="3600" />
+  <meta name="revisit-after" content="2 days" />
+  <meta name="robots" content="index,follow" />
+  <meta name="publisher" content="Your publisher infos here" />
+  <meta name="copyright" content="Copyright (c) 2011 Adam Roberts" />
+  <meta name="author" content="Designed by www.1234.info / Modified: Adam Roberts" />
+  <meta name="distribution" content="global" />
+  <meta name="image" content="http://bio.math.berkeley.edu/eXpress/img/logo.png" />
+  <meta name="description" content="eXpress is a general quantification tool for target DNA/RNA sequences. While its primary use currently is RNA-Seq it has the potential for applications in many other areas including as allele-specific expression and metgenomics. What makes eXpress different is that it is an online (or streaming) algorithm, meaning it only makes one pass through the data. This allows it to be very light-weight and efficient using a constant amount of memory and time linear in the number of sequenced fragments being processed. Furthermore, it accepts piped SAM/BAM input, allowing users to avoid storing extremely large alignment files. eXpress models fragment biases, fragment lengths, and errors, allowing it to also be one of the most accurate quantification methods available." />
+  <meta name="keywords" content="RNA-Seq, Genomics, transcript,quantification" />
+  <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf54_reset.css" />
+  <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf54_grid.css" />
+  <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf54_content.css" />
+  <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+  <title>eXpress &bull; Manual</title>
+   <script language="Javascript">
+        logo1=new Image
+        logo1.src="img/logo.png"
+        logo2=new Image
+        logo2.src="img/logo_yellow.png"
+ </script>
+  <title>eXpress &bull; Manual</title>
+</head>
+
+<!-- Global IE fix to avoid layout crash when single word size wider than column width -->
+<!-- Following line MUST remain as a comment to have the proper effect -->
+<!--[if IE]><style type="text/css"> body {word-wrap: break-word;}</style><![endif]-->
+
+
+
+<body>
+  <!-- CONTAINER FOR ENTIRE PAGE -->
+  <div class="container">
+
+    <!-- A. HEADER -->         
+    <div class="corner-page-top"></div>        
+    <div class="header">
+      <div class="header-top">
+        
+        <!-- A.1 SITENAME -->    
+        <div class="sitelogo">
+        <ul>
+            <li><a href="#" onMouseOver="document.logo.src=logo2.src" onMouseOut="document.logo.src=logo1.src"><img name="logo" src="img/logo.png"/></a></li>
+        </ul>
+        </div>
+        <div class="sitename">
+          <h1><a href="#">eXpress</a></h1> 
+          &nbsp;
+          <h2><i>Streaming</i> quantification for high-throughput sequencing</h2>
+        </div>
+    
+        <!-- A.2 BUTTON NAVIGATION -->
+        <div class="navbutton">
+          <ul>
+            <li><a href="http://www.berkeley.edu"><img src="img/berkeley_seal.gif"/></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- A.4 BREADCRUMB and SEARCHFORM -->
+      <div class="header-bottom">		
+
+        <!-- Search form -->    
+<div class="searchform" id="cse-search-form" style="padding-top:4px; width:30%;">Loading</div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('017113487431020499685:jdftct1emrw');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.enableSearchboxOnly("http://www.google.com/cse?cx=017113487431020499685:jdftct1emrw", null, true);
+    customSearchControl.draw('cse-search-form', options);
+  }, true);
+</script>
+<link rel="stylesheet" href="css/googlesearch.css" type="text/css" />
+
+   </div>
+    </div>      
+    <div class="corner-page-bottom"></div>    
+    
+    <!-- B. NAVIGATION BAR -->
+    <div class="corner-page-top"></div>        
+    <div class="navbar">
+	
+      <!-- Navigation item -->
+      <ul>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+      <!-- Navigation item -->
+      <ul>
+        <li><a href="overview.html">About</a></li>
+      </ul>            
+      <!-- Navigation item -->
+      <ul>
+        <li><a href="#">Download<!--[if IE 7]><!--></a><!--<![endif]-->
+          <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <ul>
+              <li><a href=downloads/express-1.5.1/express-1.5.1-macosx_x86_64.tgz onClick="_gaq.push(['_trackEvent', 'Downloads', 'Mac', 'Manual']);" target="_blank">Mac OS X (64-bit)</a></li>
+              <li><a href=downloads/express-1.5.1/express-1.5.1-linux_x86_64.tgz onClick="_gaq.push(['_trackEvent', 'Downloads', 'Linux', 'Manual']);" target="_blank">Linux (64-bit)</a></li>
+              <li><a href=downloads/express-1.5.1/express-1.5.1-win32_x86_64.zip onClick="_gaq.push(['_trackEvent', 'Downloads', 'Windows', 'Manual']);" target="_blank">Windows (64-bit)</a></li>
+              <li><a href=downloads/express-1.5.1/express-1.5.1-src.tgz onClick="_gaq.push(['_trackEvent', 'Downloads', 'Source', 'Manual']);" target="_blank">Source Code</a></li>
+              <li><a href="downloads" onClick="_gaq.push(['_trackEvent', 'Downloads', 'Previous','Manual']);">Previous Versions</a></li>
+            </ul>
+          <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+        </li>
+      </ul>                  
+      <ul>
+        <li><a href="tutorial.html">Getting Started</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://github.com/adarob/eXpress">Source</a></li>
+      </ul>
+      <ul>
+        <li><a href="manual.html">Manual</a></li>
+      </ul>
+      <ul>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      </div>
+      
+    <!-- C. MAIN SECTION -->      
+    <div class="main">
+    	<h1 class="pagetitle">Manual</h1>
+
+      <!-- C.1 CONTENT -->
+      <div class="content">
+                                
+        <!-- CONTENT CELL -->                
+        <div class="corner-content-1col-top"></div>                        
+        <div class="content-1col-nobox">
+		
+		  <h1 id="doc">Documentation</h1>
+		  <p>Complete documentation for the source code is available in both <a href=doc/index.html>html</a> and <a href=doc/express-doc.pdf>pdf</a> formats.</p>
+     			          		<p>&rarr; <a href="#top">Back to top.</a></p>
+     			          </div> 
+           <div class="corner-content-1col-bottom"></div> 
+     	<!-- CONTENT CELL -->                
+        <div class="corner-content-1col-top"></div>                        
+        <div class="content-1col-nobox">
+		
+     	  
+     	  <h1 id="usage">Usage</h1>
+		  <h2 id="prereq">Prerequisites</h2>
+		  <p>eXpress runs on intel-based computers running Linux, Mac OS X, or Windows.  You can install pre-compiled binaries or build eXpress from the source code. If you wish to build eXpress yourself, you must have a C++ compiler installed (for example, <a href=http://developer.apple.com/tools/xcode>XCode</a> for Mac OS X, <a href=http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express>Visual C++ Express</a> for Windows 7) as well as <a href=http://www.cmake.org>CMake</a>, <a href=https://github.com/pezmaster31/bamtools>BamTools</a>, and the <a href="http://www.boost.org">Boost C++ libraries</a>.  See the <a href="tutorial.html#install">Installation</a> section on the Getting Started page for detailed instructions.</p> 
+		  <h2 id="running">Running eXpress</h2>
+       	  <p>Run <tt>eXpress</tt> from the command line as follows:
+	      <ul><pre class="sc"><code>$ express [options]* &lt;target_seqs.fasta&gt; &lt;aligned_reads.(sam/bam)&gt;</code></pre></ul></p> 
+	  
+		  <p id="options">The following is a detailed description of the options used to control eXpress:
+		  <table> 
+		  <tr><td WIDTH=40% VALIGN=top><b>Arguments:</b></td><td WIDTH=60% VALIGN=top></td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap><tt>&lt;target_seqs.fasta&gt;</tt></td>
+		  <td VALIGN=top>A file of target sequences in <a href=http://en.wikipedia.org/wiki/FASTA_format>multi-FASTA</a> format. See <a href="#fasta">Input Files</a> for more details.</td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap><tt>&lt;lib_1.sam,lib_2.sam,...,lib_N.sam&gt;</tt></td>
+		  <td VALIGN=top>A comma-separated list of filenames for reads aligned to the target sequences in <a href="http://samtools.sourceforge.net"> 
+		  SAM format</a>. See <a href="#sam">Input Files</a> for more details.</td></tr> 
+		  
+		  <tr><td VALIGN=top><b>Standard Options:</b></td><td VALIGN=top></td></tr>
+		  
+		  <tr><td VALIGN=top nowrap><tt>-h/--help</tt> </td>
+		  <td VALIGN=top>Prints the help message and exits</td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>-o/--output-dir &lt;string&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  Sets the name of the directory in which eXpress will write all of its 
+		  output.  The default is "./".
+		  </td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>-B/--additional-batch &lt;int&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  Specifies the number of additional batch EM rounds to perform on the data using the initial results from the online EM as a seed.  Can improve accuracy at the cost of time.
+		  </td></tr> 
+	  
+	 	  <tr><td VALIGN=top nowrap> 
+		  <tt>-O/--additional-online &lt;int&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  Specifies the number of additional online EM rounds to perform on the data after the initial online round.  Can improve accuracy at the cost of time.
+		  </td></tr> 
+
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>-m/--frag-len-mean &lt;int&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  Specifies the mean fragment length.  While the empirical distribution is estimated from paired-end reads on-the-fly, this value paramaterizes the prior distribution.  If only single-end reads are available, this prior distribution is also used to determine the effective length.  Default is 200.
+		  </td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>-s/--frag-len-stddev &lt;int&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  Specifies the fragment length standard deviation.  While the empirical distribution is estimated from paired-end reads on-the-fly, this value paramaterizes the prior distribution.  If only single-end reads are available, this prior distribution is also used to determine the effective length.  Default is 60.
+		  </td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>-H/--haplotype-file &lt;string&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  Specifies the location of a comma-separated file of sets of target IDs (one set per line) specifying which targets represent multiple haplotypes of a single feature (ie, transcript). Useful for allele-specific expression.
+		  </td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--output-align-prob</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress outputs an additional file called <tt>hits.prob.(sam/bam)</tt> containing identical copies of all input alignments with an additional <tt>XP</tt> tag that contains the estimated probability that each alignment of the read (pair) is the "correct" one.  The <tt>XP</tt> values for all alignments of of the same read (pair) will sum to 1. 
+		  </td></tr> 
+
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--output-align-samp</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress outputs an additional file called <tt>hits.samp.(sam/bam)</tt> containing a single alignment for each fragment sampled at random based on the alignment likelihoods calculated by eXpress.
+		  </td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--fr-stranded</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress only accepts alignments (single-end or paired) where the first (or only) read is aligned to the forward target sequence and the second read is aligned to the reverse-complemented target sequence.  In directional sequencing, this is equivalent to second-strand only. If all reads are single-end, <tt>--f-stranded</tt> should be used instead. Disabled by default.
+		  </td></tr>
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--rf-stranded</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress only accepts alignments (single-end or paired) where the first (or only) read is aligned to the reverse-completemented target sequence and the second read is aligned to the forward target sequence.  In directional sequencing, this is equivalent to first-strand only. If all reads are single-end, <tt>--r-stranded</tt> should be used instead. Disabled by default.
+		  </td></tr>
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--f-stranded</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress only accepts single-end alignments to the forward target sequence.  In directional sequencing, this is equivalent to second-strand only. Disabled by default.
+		  </td></tr>
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--r-stranded</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress only accepts single-end alignments to the reverse target sequence.  In directional sequencing, this is equivalent to second-strand only. Disabled by default.
+		  </td></tr>
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--no-update-check</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress will not ping our server to see if a newer version is available.
+		  </td></tr>
+		  
+		  <tr><td VALIGN=top><b>Advanced Options:</b></td><td VALIGN=top></td></tr>
+
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>-f/--forget-param &lt;float&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  A parameter specifying the rate at which the prior is "forgotten" by increasing the mass of fragments during online processing. Larger numbers (max of 1) mean a slower rate, which decreases convergence but improves stability. Smaller numbers (minumum of 0.5) increase the rate, which may lead to faster convergence but can also lead to instability.
+		  </td></tr> 
+
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--library-size &lt;int&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  Specifies the number of fragments in the library to be used in the FPKM calculation. If left unspecified, this number will be computed from the input.
+		  </td></tr> 
+
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--max-indel-size &lt;int&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  A parameter specifying the maximum allowed size of a single indel. Alignments with larger indels will be ignored. A geometric prior for indel length is fit so that all but 10e-6 of the probability mass lies within the allowed region. The default is 10.
+		  </td></tr> 
+
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--calc-covar</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress calculates the covariance between targets and outputs them for use in differential expression analysis. This calculation requires slightly more time and memory.
+		  </td></tr>
+
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--expr-alpha &lt;float&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  A parameter specifying the weight of uniform the target abundance prior, in pseudo-counts per bp. The default is 0.01.
+		  </td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--stop-at &lt;int&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  A parameter specifying the number of fragments to process before quitting.
+		  </td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--burn-out &lt;int&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  A parameter specifying the number of fragments after which to stop learning the auxiliary parameters (fragment length, bias, error).
+		  </td></tr> 
+		  
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--no-bias-correct</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress will not measure and account for sequence-specific biases. Will lead to a slight initial increase in speed at the expense of accuracy.
+		  </td></tr>
+
+		  <tr><td VALIGN=top nowrap> 
+		  <tt>--no-error-model</tt> 
+		  </td><td VALIGN=top> 
+		  With this option, eXpress will not measure and account for errors in alignments. Will lead to an increase in speed, but may greatly decrease accuracy.
+		  </td></tr>
+		  
+ 		  <tr><td VALIGN=top nowrap> 
+		  <tt>--aux-param-file &lt;string&gt;</tt> 
+		  </td><td VALIGN=top> 
+		  Specifies an auxiliary parameter file output by a different run of eXpress to be used as the auxiliary parameters for this round. Greatly improves speed and should be used when a subset of the targets or fragments are being used in a second estimation.
+		  </td></tr> 
+
+		  </table></p>
+		
+		<p>&rarr; <a href="#top">Back to top.</a></p>
+		          </div> 
+        <div class="corner-content-1col-bottom"></div>                               
+      
+        <!-- CONTENT CELL -->                
+        <div class="corner-content-1col-top"></div>                        
+        <div class="content-1col-nobox">
+		<h1 id="input">Input Files</h1>
+		<h2 id="fasta">Target Sequences (FASTA)</h2>
+	  	<p>eXpress requires a <a href=http://en.wikipedia.org/wiki/FASTA_format>multi-FASTA</a> file of target sequences for which the abundances will be measured. In the case of RNA-Seq, these are the transcript sequences.  If
+	  	the transcriptome of your organism is not
+        annotated, you can generate this file from your sequencing
+        reads using a <i>de novo</i> transcriptome assembler such as
+        <a href=http://trinityrnaseq.sourceforge.net/>Trinity</a>, <a
+        href=http://www.ebi.ac.uk/~zerbino/oases/>Oases</a>, or <a
+        href=http://www.bcgsc.ca/platform/bioinfo/software/trans-abyss>Trans-ABySS</a>.
+        If your organism has a reference genome, you can assemble
+        transcripts directly from mapped reads using <a
+        href="http://cufflinks.cbcb.umd.edu/">Cufflinks</a>. If your genome is already annotated (in
+        GTF/GFF), you can generate a multi-FASTA file using the <a href=http://genome.ucsc.edu/>UCSC Genome Browser</a> by uploading your annotation as a track and downloading the sequences under the "Tables" tab.</p>
+	  	
+	  	<h2 id="sam">Read Alignments (SAM/BAM)</h2>
+	  	<p>eXpress also requires a file, multiple files, or a piped stream of SAM or binary SAM (BAM) alignments as input.  The SAM alignments should be generated by mapping your sequencing reads to the target sequences specified in the multi-FASTA input file described above.  For more details on the SAM format, see the <a href="http://samtools.sourceforge.net/SAM1.pdf">specification</a>.  Many short read mappers including <a href="http://bowtie-bio.sourceforge.net">Bowtie</a>, <a href="http://bowtie-bio.sourceforge.net/bowtie2">Bowtie2</a>, <a href="http://bio-bwa.sourceforge.net/">BWA</a>, and <a href=http://maq.sourceforge.net/>MAQ</a> can produce output in this format. It is important that you allow many multi-mappings (preferably unlimited) in order to allow eXpress to select the correct alignment instead of the mapper.  See <a href="tutorial.html#example">Getting Started</a> for an example using Bowtie in both streaming and file input modes.</p> 
+	  <p> 
+	  If using paired-end reads, the read names must match for each pair, excluding '/1' and '/2' suffix identifiers.  Also, the SAM file supplied to eXpress should be grouped by read id.  If you aligned your reads with Bowtie, your alignments will be properly ordered already.  If you used another tool, you
+	  should ensure that they are properly sorted.  You can sort your SAM using the following command:
+	<ol><pre class="sc"><code>sort -k 1 hits.sam > hits.sam.sorted</code></pre></ol></p>
+	<p>You can sort your BAM using this command:
+	<ol><pre class="sc"><code>samtools sort -n hits.bam hits.sorted</code></pre></ol></p>
+	<p>If multiple libraries were prepared for the same sample or multiple read lengths were used in different sequencing runs, the alignments for each should be grouped in separate SAM files so that auxiliary parameters can be estimated independently.  The filenames can then be input into eXpress as a comma-separated (with no spaces) list of SAM files.  See <a href="#running">above</a> for an example.  When this feature is used, separate <a href="#param">parameter estimates</a> will be output for each library, but only a single <a href="#expr">abundance</a> file will be produced.</p>
+        		<p>&rarr; <a href="#top">Back to top.</a></p>
+                  </div> 
+        <div class="corner-content-1col-bottom"></div>                               
+      
+        <!-- CONTENT CELL -->                
+        <div class="corner-content-1col-top"></div>                        
+        <div class="content-1col-nobox">
+        <h1 id="output">Output Files</h1>
+        <h2 id="expr">Target Abundances (results.xprs)</h2>
+        <p>This file is always output and contains the target abundances and other values calculated based on the input sequences and read alignments. The file has 10 tab-delimited columns, sorted by the bundle_id (column 1). The columns are defined as follows: 
+        <!--"bundle_id transcript_id length eff_length bundle_frac est_counts est_counts_var fpkm --!>
+      <table CELLSPACING=15> 
+	  <tr><th class="top" scope="col" width=4%>#</th><th class="top" scope="col" width=20%>Column Name</th><th class="top" scope="col" width=16%>Example</th><th class="top" scope="col" width=60%>Description</th></tr> 
+	  <tr><th scope="row">1</th><td>bundle_id</td><td><tt>10</tt></td><td>ID of bundle the target belongs to.  A bundle is defined as the transitive closure of targets that share multi-mapping reads.</td></tr> 
+ 	  <tr><th scope="row">2</th><td>target_id</td><td><tt>NM_016467</tt></td><td>The ID given to the target in the input multi-FASTA file.</td></tr> 
+   	  <tr><th scope="row">3</th><td>length</td><td><tt>2182</tt></td><td>The number of base pairs in the target sequence given in the input multi-FASTA file.</td></tr> 
+	  <tr><th scope="row">4</th><td>eff_length</td><td><tt>783.136288</tt></td><td>The length of the target adjusted for fragment biases (length, sequence-specificity, and relative position). This number is what the fragment counts are normalized by to calculate FPKM, not the true length.</td></tr> 
+   	  <tr><th scope="row">5</th><td>tot_counts</td><td><tt>99</tt></td><td>The number of fragments mapping (uniquely or ambiguously) to this target.</td></tr> 
+   	  <tr><th scope="row">6</th><td>uniq_counts</td><td><tt>7</tt></td><td>The number of fragments uniquely mapping to this target.</td></tr> 
+	  <tr><th scope="row">7</th><td>est_counts</td><td><tt>26.702456</tt></td><td>The estimated number of fragments generated from this target in the sequencing experiment.</td></tr> 
+  	  <tr><th scope="row">8</th><td>eff_counts</td><td><tt>74.399258</tt></td><td>The estimated number of fragments generated from this target in the sequencing experiment, adjusted for fragment and length biases.  In other words, his is the expected number of reads from the experiment if these biases did not exist.  This is the value recommended for input to count-biased differential expression tools.</td></tr> 
+  	  <tr><th scope="row">9</th><td>ambig_distr_alpha</td><td><tt>3.154652</tt></td><td>The alpha parameter for the posterior beta-binomial distribution fit to the ambiguous reads.</td></tr> 
+  	  <tr><th scope="row">10</th><td>ambig_distr_beta</td><td><tt>2.293653</tt></td><td>The beta parameter for the posterior beta-binomial distribution fit to the ambiguous reads.</td></tr> 
+   	  <tr><th scope="row">11</th><td>fpkm</td><td><tt>3.514176</tt></td><td>The estimated relative abundance of this target in the sample in units of <b>f</b>ragments <b>p</b>er <b>k</b>ilobase per <b>m</b>illion mapped. This value is proportional to est_counts divided by eff_length.</td></tr> 
+   	  <tr><th scope="row">12</th><td>fpkm_conf_low</td><td><tt>2.119151</tt></td><td>The lower bound of the 95% confidence interval for the FPKM.</td></tr> 
+   	  <tr><th scope="row">13</th><td>fpkm_conf_high</td><td><tt>4.909200</tt></td><td>The upper bound of the 95% confidence interval for the FPKM.</td></tr> 
+   	  <tr><th scope="row">14</th><td>solvable</td><td><tt>T</tt></td><td>A binary (T/F) value indicating whether the likelihood function has a unique maximum.  If false (F), the reported posterior distribution is uniform.</td></tr> 
+   	  <tr><th scope="row">15</th><td>tpm</td><td><tt>2.347222e+05</tt></td><td>Transcripts per million. See <a href=http://lynchlab.uchicago.edu/publications/Wagner,%20Kin,%20and%20Lynch%20(2012).pdf>description</a>.</td></tr> 
+	  </table></p>
+	  <p>See the <a href="overview.html#methods">Methods</a> for more details on how these values are calculated.</p>
+	  
+	  <h2 id="param">Parameter Estimates (params.xprs)</h2>
+      <p>This file contains the values of the other parameters (besides abundances and counts) estimated by eXpress.  The file is separated into sections for each parameter type, beginning with a '>' symbol. Following this symbol is the section header containing a name for the parameter type followed by the values on subsequent lines.  All values belong to this parameter field until the next '>' or the end of the file.  The following parameter types are output to this file:
+          <table CELLSPACING=15> 
+	  <tr><th class="top" scope="col" width=4%>#</th><th class="top" scope="col" width=16%>Parameter Type</th><th class="top" scope="col" width=25%>Description</th><th class="top" scope="col" width=55%>Output Format</th></tr> 
+	  <tr><th scope="row">1</th><td>Fragment Length Distribution</td><td>The empirical distribution on fragments lengths.</td><td>The fragment length range is listed next to the section header in paranthesis (0-800 by default).  The next line contains a tab-delimited list of probabilities for these lengths in order.</td></tr> 
+ 	  <tr><th scope="row">2</th><td>First Read Mismatch</td><td>The first-order Markov model for mismatches between the reference and observed nucleotides for the first read sequenced in a pair.</td><td>Each line begins with the nucleotide position in the read followed by a colon (0-indexed).  The column header denotes the which "substitution" the probability is for.  For example, a value in the column labeled "CG->*T" in the row labeled 10 is the conditional probability that a read has a 'T' at the 11th position given it is mapped to a reference having a 'C' in the 10th position and a 'G' in the 11th.  Note that since this is a conditional probability, CG->*A, CG->*C, CG->*G, CG->*T will sum to 1.</td></tr> 
+ 	  <tr><th scope="row">3</th><td>Second Read Mismatch</td><td>The first-order Markov model for mismatches between the reference and observed nucleotides for the second read sequenced in a pair.</td><td>Same as above.</td></tr> 
+	  <tr><th scope="row">4</th><td>5' Sequence-Specific Bias</td><td>Parameters relating to the likelihood of the sequence surrounding the 5' end of a fragment in transcript coordinates.  See <a href="http://genomebiology.com/2011/12/3/R22/abstract">Roberts, et al. (2010a)</a> for more details.</td><td>This section is divided into 3 subsections.  First is a matrix of the empirical nucleotide distribution for observed fragments ("Observed Marginal Distribution") at each position in a window surrounding the 5' end of the fragment.  The column headers give the 0-indexed position number with negatives being upstream in the target sequence.  Each row gives the probability for a different nucleotide, which is specified in the first column followed by a colon.  Note that since this is a probability distribution, each column will sum to 1.  The second subsection contains the "Observed Conditional Probabilities".  These are the conditional probabilities for the 3rd order Markov model, the columns specifying the conditional event in the observed fragments and the row specifying the window position.  The third matrix is the "Expected Conditional Probabilities".  This matrix is similar to the previous, except the probabilities are calculated assuming target sampling based only on fragment length and relative abundance, and fragment sampling within a target dependent only on length (no sequence biases).  Bias weights in eXpress are calculated by taking the ratio of obesrved to expected probability.</td></tr> 
+	  <tr><th scope="row">5</th><td>3' Sequence-Specific Bias</td><td>Parameters relating to the likelihood of the sequence surrounding the 3' end of a fragment in transcript coordinates.  See <a href="http://genomebiology.com/2011/12/3/R22/abstract">Roberts, et al. (2010a)</a> for more details.</td><td>Same as above, except for the 3' fragment end.</td></tr> 
+	  </table></p>
+	  <p>If multiple alignment files were provided, a separate parameter output will be output for each with a unique index identifying its position in the command-line argument given by the user (ie, the second SAM file in the argument list will be named 'params.2.xprs').</p>
+	  
+      <h2 id="covar">Count Variance-Covariance (varcov.xprs)</h2>
+      <p>This file is produced only when the <tt><a href="options">--calc-covars</a></tt> option flag is used as described <a href="#running">above</a>.  The file contains the estimated variances and covariances on the counts between pairs of targets that shared multi-mapped reads, primarily to be used in differential expression analysis.  Since the covariance between targets in different bundles is always 0, the full sparse matrix is broken up into smaller tab-delimited matrices for each bundle.  An example of this output for the sample dataset used in the <a href=tutorial.html#example>Getting Starting</a> tutorial is shown below:</p>
+ 	  <ol><li><pre class="output"><code>>>1: NM_014212
+0.000000e+00
+>2: NM_001168316, NM_174914, NR_031764
+3.234847e+02	-2.570762e+02	-6.640854e+01
+-2.570762e+02	4.082292e+02	-0.000000e+00
+-6.640854e+01	-0.000000e+00	2.175616e+02
+>3: NM_022658
+0.000000e+00
+>4: NM_173860
+0.000000e+00
+>5: NM_014620, NM_153693, NR_003084, NM_153633, NM_018953, NM_004503
+2.067753e+02	-0.000000e+00	-0.000000e+00	-0.000000e+00	-0.000000e+00	-0.000000e+00
+-0.000000e+00	6.035824e+01	-0.000000e+00	-0.000000e+00	-0.000000e+00	-0.000000e+00
+-0.000000e+00	-0.000000e+00	1.731434e+01	-0.000000e+00	-0.000000e+00	-0.000000e+00
+-0.000000e+00	-0.000000e+00	-0.000000e+00	1.879961e+02	-0.000000e+00	-2.499948e-01
+-0.000000e+00	-0.000000e+00	-0.000000e+00	-0.000000e+00	1.149211e+01	-0.000000e+00
+-0.000000e+00	-0.000000e+00	-0.000000e+00	-2.499948e-01	-0.000000e+00	4.581855e+01
+>6: NM_017409
+0.000000e+00
+>7: NM_017410
+0.000000e+00
+>8: NM_006897
+0.000000e+00</code></pre></li></ol>
+      <p>Each bundle's matrix is headed by an identifier line that begins with a greater than symbol (>) followed by the bundle id and a comma-separated list of targets in the bundle.  The ordering of this list provides the indices for the matrix that is to follow.  For example, in bundle 1 of the output above, the fifth value in the second row (-2.862072e+02) is the covariance between NM_153633 and NM_014620. Notice that an identical value is also in the second column of the fifth row, as the variance-covariance matrix will always be symmetric.</p>
+	  <p>See the <a href="overview.html#methods">Methods</a> for more details on how these values are calculated.</p> 
+	  		<p>&rarr; <a href="#top">Back to top.</a></p>
+        </div> 
+        <div class="corner-content-1col-bottom"></div>                               
+	  </div>
+      
+       <!-- C.2 SUBCONTENT -->
+      <div class="subcontent">
+      
+          <!-- SUBCONTENT CELL -->
+        <div class="corner-subcontent-top"></div>                        
+        <div class="subcontent-box">
+          <h1 class="menu">Outline</h1> 
+          <div class="sidemenu1">
+          <!-- CONTENT CELL -->                
+ 		  <ul>
+   		  	<li><a href="#doc">Documentation</a></li>
+ 		  	<li><a href="#usage">Usage</a></li>
+			 <li><a href="#prereq">&rarr;Prerequisites</a></li>
+			 <li><a href="#running">&rarr;Running eXpress</a></li>
+			<li><a href="#input">Input Files</a></li>
+			 <li><a href="#fasta">&rarr;Target Sequences (FASTA)</a></li>
+			 <li><a href="#sam">&rarr;Read Alignments (SAM/BAM)</a></li>
+			<li><a href="#output">Output Files</a></li>
+			 <li><a href="#expr">&rarr;Target Abundances (results.xprs)</a></li>
+			 <li><a href="#covar">&rarr;Variance-Covariance (varcov.xprs)</a></li>
+		  </ul>
+		  </div> 
+         </div>
+        <div class="corner-subcontent-bottom"></div> 
+
+ 	 </div>
+    </div>
+      
+    <!-- D. FOOTER -->      
+    <div class="footer">
+      <p>Copyright &copy; 2011 Adam Roberts&nbsp;&nbsp;|&nbsp;&nbsp;All Rights Reserved</p>
+      <p class="credits">Design by <a href="http://1234.info/" title="Designer Homepage">1234.info</a> | Modified by <a href="http://cs.berkeley.edu/~adarob/">Adam Roberts</a> | <a href="http://validator.w3.org/check?uri=referer" title="Validate XHTML code">XHTML 1.0</a> | <a href="http://jigsaw.w3.org/css-validator/" title="Validate CSS code">CSS 2.0</a></p>
+      <br />
+      <p>The eXpress project was funded in part by an NSF graduate fellowship to Adam Roberts and NIH grant 1R01HG006129-01</p>
+    </div>
+    <div class="corner-page-bottom"></div>        
+  </div>
+  
+</body>
+</html>
+
+
+

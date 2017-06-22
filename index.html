@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<!--  Version: Multiflex-5.4 / About                     -->
+<!--  Type:    Design with sidebar                          -->
+<!--  Date:    March 13, 2008                               -->
+<!--  Design:  www.1234.info                                -->
+<!--  License: Fully open source without restrictions.      -->
+<!--           Please keep footer credits with the words    -->
+<!--           "Design by 1234.info". Thank you!            -->
+
+<head>
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25486066-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="3600" />
+  <meta name="revisit-after" content="2 days" />
+  <meta name="robots" content="index,follow" />
+  <meta name="publisher" content="Your publisher infos here" />
+  <meta name="copyright" content="Copyright (c) 2011 Adam Roberts" />
+  <meta name="author" content="Designed by www.1234.info / Modified: Adam Roberts" />
+  <meta property="og:site_name" content="eXpress" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="eXpress &bull; Home" />
+  <meta property="og:url" content="http://bio.math.berkeley.edu/eXpress" />
+  <meta property="og:image" content="http://bio.math.berkeley.edu/eXpress/img/logo.png" />
+  <meta property="og:description" content="eXpress is a general quantification tool for target DNA/RNA sequences. While its primary use currently is RNA-Seq it has the potential for applications in many other areas including as allele-specific expression and metgenomics. What makes eXpress different is that it is an online (or streaming) algorithm, meaning it only makes one pass through the data. This allows it to be very light-weight and efficient using a constant amount of memory and time linear in the number of sequenced fragments being processed. Furthermore, it accepts piped SAM/BAM input, allowing users to avoid storing extremely large alignment files. eXpress models fragment biases, fragment lengths, and errors, allowing it to also be one of the most accurate quantification methods available." />
+  <meta property="fb:admins" content="adarob" />
+  <meta name="keywords" content="RNA-Seq, Genomics, transcript,quantification" />
+  <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf54_reset.css" />
+  <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf54_grid.css" />
+  <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/mf54_content.css" />
+  <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+   <script language="Javascript">
+        logo1=new Image
+        logo1.src="img/logo.png"
+        logo2=new Image
+        logo2.src="img/logo_yellow.png"
+ </script>
+  <title>eXpress &bull; Home</title>
+</head>
+
+<!-- Global IE fix to avoid layout crash when single word size wider than column width -->
+<!-- Following line MUST remain as a comment to have the proper effect -->
+<!--[if IE]><style type="text/css"> body {word-wrap: break-word;}</style><![endif]-->
+
+
+
+<body>
+  <!-- CONTAINER FOR ENTIRE PAGE -->
+  <div class="container">
+
+    <!-- A. HEADER -->         
+    <div class="corner-page-top"></div>        
+    <div class="header">
+      <div class="header-top">
+        
+        <!-- A.1 SITENAME -->    
+        <div class="sitelogo">
+        <ul>
+            <li><a href="#" onMouseOver="document.logo.src=logo2.src" onMouseOut="document.logo.src=logo1.src"><img name="logo" src="img/logo.png"/></a></li>
+        </ul>
+        </div>
+        <div class="sitename">
+          <h1><a href="#">eXpress</a></h1> 
+          &nbsp;
+          <h2><i>Streaming</i> quantification for high-throughput sequencing</h2>
+        </div>
+    
+        <!-- A.2 BUTTON NAVIGATION -->
+        <div class="navbutton">
+          <ul>
+            <li><a href="http://www.berkeley.edu"><img src="img/berkeley_seal.gif"/></a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- A.4 BREADCRUMB and SEARCHFORM -->
+      <div class="header-bottom">
+       
+		
+
+        <!-- Search form -->    
+<div class="searchform" id="cse-search-form" style="padding-top:4px; width:30%;">Loading</div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript"> 
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('017113487431020499685:jdftct1emrw');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.enableSearchboxOnly("http://www.google.com/cse?cx=017113487431020499685:jdftct1emrw", null, true);
+    customSearchControl.draw('cse-search-form', options);
+  }, true);
+</script>
+<link rel="stylesheet" href="css/googlesearch.css" type="text/css" />
+
+   </div>
+    </div>         
+    <div class="corner-page-bottom"></div> 
+    
+    <!-- B. NAVIGATION BAR -->
+    <div class="corner-page-top"></div>        
+    <div class="navbar">
+	
+      <!-- Navigation item -->
+      <ul>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+      <!-- Navigation item -->
+      <ul>
+        <li><a href="overview.html">About</a></li>
+      </ul>        
+      <ul>
+        <li><a href="#">Download<!--[if IE 7]><!--></a><!--<![endif]-->
+          <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <ul>
+              <li><a href=downloads/express-1.5.1/express-1.5.1-macosx_x86_64.tgz onClick="_gaq.push(['_trackEvent', 'Downloads', 'Mac', 'home-menu']);" target="_blank">Mac OS X (64-bit)</a></li>
+              <li><a href=downloads/express-1.5.1/express-1.5.1-linux_x86_64.tgz onClick="_gaq.push(['_trackEvent', 'Downloads', 'Linux', 'home-menu']);" target="_blank">Linux (64-bit)</a></li>
+              <li><a href=downloads/express-1.5.1/express-1.5.1-win32_x86_64.zip onClick="_gaq.push(['_trackEvent', 'Downloads', 'Windows', 'home-menu']);" target="_blank">Windows (64-bit)</a></li>
+              <li><a href=downloads/express-1.5.1/express-1.5.1-src.tgz onClick="_gaq.push(['_trackEvent', 'Downloads', 'Source', 'home-menu']);" target="_blank">Source Code</a></li>
+              <li><a href="downloads" onClick="_gaq.push(['_trackEvent', 'Downloads', 'Previous','home-menu']);">Previous Versions</a></li>
+            </ul>
+          <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+        </li>
+      </ul>   
+      <ul>
+        <li><a href="tutorial.html">Getting Started</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://github.com/adarob/eXpress">Source</a></li>
+      </ul>
+      <ul>
+        <li><a href="manual.html">Manual</a></li>
+      </ul> 
+      <ul>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      </div>
+  
+    <!-- C. MAIN SECTION -->      
+    <div class="main">
+    	<h1 class="pagetitle">Home</h1>
+
+      <!-- C.1 CONTENT -->
+      <div class="content">
+        <!-- CONTENT CELL -->                
+        <div class="corner-content-1col-top"></div>                        
+        <div class="content-1col-nobox">
+          <h1>News</h1>
+
+          <h2>02.09.2014 &bull; eXpress Mac 1.5.1 binary updated.</h2>
+          <p> The previous 1.5.1 binary for OSX was linked with a dynamic Protobuf library that caused the binary to fail on systems without the library installed. The binary has now been updated. </p>
+          <p> There is no need to update if you were not using this binary or the binary was working for you previously. </p>
+
+          <h2>12.08.2013 &bull; eXpress now available in the cloud with <a href=https://github.com/adarob/eXpress-d>eXpress-D</a>!</h2>
+          <p> Thanks in major part to the amazing work of <a href=https://github.com/harveyfeng>Harvey Feng</a>, a distributed, batch version of eXpress can now be run on a cluster using <a href=http://spark.incubator.apache.org/>Apache Spark</a> to provide a scalable solution for fragment assignment and abundance estimation. Since <a href=https://github.com/adarob/eXpress-d>eXpress-D</a> uses the full batch EM algorithm, it provides the most accurate estimates according to our tests.</p>
+          <p> For more details, please read our <a href=http://www.biomedcentral.com/1471-2105/14/358>manuscript</a> in BMC Bioinformatics and check out the <a href=https://github.com/adarob/express-d/wiki>wiki</a> on GitHub.</p>
+
+          <h2>12.08.2013 &bull; eXpress 1.5.1 released</h2>
+          <p>This update is a minor patch containing the following bug fixes:
+          <ul>
+          <li>Fixed occasional crash during writing of results.
+          <li>Added support for FASTA files containing empty lines.
+   		    </ul>
+   		    </p>
+          
+          <h2>11.18.2013 &bull; eXpress is now on GitHub!</h2>
+          <p>In order to speed up development, we're excited to announce that the eXpress codebase will now be stored on a public repository at GitHub (<a href=https://github.com/adarob/eXpress>https://github.com/adarob/eXpress</a>).
+          <p>If you have a feature you want to add or a bug you want to fix, please feel free to make a pull request.  If you're just interested in helping further the project along but don't have anything specific in mind, check out the <a href=https://github.com/adarob/eXpress/issues>Issues</a> page or <a href=mailto:ask.xprs@gmail.com>contact us</a>! We always have a few more ideas than we have time to implement.</p>
+          <p>Thanks to everyone for their contributions so far.  We hope you can help make eXpress even better!<p>
+   		    </ul>
+   		    
+          <h2>11.17.2013 &bull; eXpress 1.5.0 released</h2>
+          <p>This update contains the following fixes and improvements:</p>
+          <ul>
+          <li>Now compatible with inputs containing more than 2 haplotypes. Just create a comma-separate list of haplotypes, one set per line, and use the <tt><a href=manual.html#options>-H,--haplotype-file</a></tt> option.  <i>Thanks to Lindy McBride for helping test this feature.</i>
+          <li>Added TPM to output. <i>Thanks to Richard Smith for the implementation!</i>
+          <li>Made auxiliary parameter updates atomic to correct biases that are most apparent in ASE analyses. Leads to significant improvements in accuracy even in non-ASE settings. See the <a href=https://groups.google.com/forum/#!category-topic/express-users/questions--support/5Dy5KycNjeE>user group</a> for more details. <i>Thanks to William Nelson for helping squash this bug.</i>
+   		    </ul>
+   		    <p>More exciting news coming later this week...stay tuned!</p>
+   		    
+          <h2>09.26.2013 &bull; eXpress 1.4.1 released</h2>
+          <p>This update is a minor patch containing the following bug fixes:
+          <ul>
+          <li>Fixed bug occasionally causing NaNs to appear in output for single-end datasets.
+          <li>Slight correction to likelihood calculation for very short targets.
+          <li>Fixed crash when using <tt>--no-error-model</tt>.
+   		    </ul></p>
+          
+          
+          <h2>07.29.2013 &bull; eXpress 1.4.0 released</h2>
+          <p>Major Changes:<ul>
+          <li>Added improved support for allele-specific expression for phased transcripts. See the
+          <tt><a href=manual.html#options>-H,--haplotype-file</a></tt> option for more details.
+   		    <li>Improved logging, now using stderr by default.
+   		    <li>Made bundle handling and merging threadsafe.
+   		    <li>Added max-read-len option and related error message.
+   		    <li>Optional compilation using GooglePerfTools TCMalloc for improved speed.
+          <li>Various minor bug fixes and performance improvements.
+   		    </ul></p>
+          
+          <h2>07.21.2013 &bull; Sneak peak at eXpress 2</h2>
+          <p>We are presenting a poster at ISMB 2013 highlighting the new "RNA-DNA Difference/RNA Editing"
+          detection feature coming in eXpress 2 this fall. If you aren't at the conference, you can
+          view the poster <a href=http://cs.berkeley.edu/~adarob/posters/xprs_edit_poster.pdf>here</a>.
+          </p>
+          
+          <h2>06.03.2013 &bull; <font color="red">R</font>eXpress now available!</h2>
+          <p>The developers of eXpress along with UC Berkeley MCB graduate student Lorian Schaeffer
+          have developed a new method for updating abundance estimates after a change in the annotation.
+          Details on the method can be found in our recent 
+          <a href=http://bioinformatics.oxfordjournals.org/content/early/2013/05/21/bioinformatics.btt197>Bioinformatics paper</a>.<br><br>
+          The method has been implemented in a software tool called <font color="red">R</font>eXpress, which can be found at <a href="http://bio.math.berkeley.edu/ReXpress">bio.math.berkeley.edu/ReXpress</a>.
+          </p>
+          
+          <h2>03.15.2013 &bull; User Forum &bull; eXpress 1.3.1 released</h2>
+          <p>We have now created a <a href="https://groups.google.com/d/forum/express-users">User Forum</a> for users to ask questions, provide assistance, share best practices, and post useful scripts.  This is a great first stop if you need help using eXpress!</p>
+          <p>eXpress 1.3.1 Changes:<ul>
+   		    <li>Corrected an issue where output SAM/BAM files were partially truncated.</li>
+   		    <li>Removed a directional (RF) warning that occurred improperly.</li>
+  		    <li>'/1' and '/2' are now automatically stripped from the suffix of read names.</li>
+   		    <li>FPKM is now reported in scientific notation.</li>
+   		    <li>Online estimates are now rescaled and projected before additional batch rounds.</li>
+   		</ul></p>
+          
+          <h2>01.17.2013 &bull; eXpress 1.3.0 released</h2>
+          <p>Changes:<ul>
+   		    <li>Fixed an issue where indel parameters were not properly used in the likelihood.</li>
+   		    <li>Added indel parameters to the params.xprs output file.</li>
+   		    <li>Position indexing in params.xrps is now 1-based.</li>
+   	    	<li>Added the ability to load parameters from a params.xprs file. See the <tt>--aux-param-file</tt> option in <a href="manual.html#usage">Manual</a> for more details.</li>
+   	    	<li>Corrected minor issue that could effect variance bounding.</li>
+   		    <li>Added <tt>--library-size</tt> option for FPKM calculations. See the <a href="manual.html#usage">Manual</a> for more details.</li>
+   		    <li>Added warning when dataset is too small for computing bias parameters.</li>
+   		    </ul></p> 
+
+          <h2>11.26.2012 &bull; eXpress 1.2.2 released</h2>
+          <p>Changes:<ul>
+   		<li>Fixed an issue affecting the variance, which led to unreasonably large confidence intervals and invalid ambiguous count distribution parameters. These
+         parameters (alpha and beta) will now always be greater than 0.</li>
+		  <li>Fixed an in issue making it impossible to enable additional batch rounds using the <tt>-B/--additional-batch</tt> option.</li>
+		  <li>Added options for single-end strand-specific protocols (<tt>--f-stranded</tt> and <tt>--r-stranded</tt>). See the <a href="manual.html#usage">Manual</a> for more details.</li>
+		  <li>Added a warning message when a library is likely strand-specific but the proper flag has not been given.</li>
+   		<li>The beta binomial distribution parameters are now reported in scientific notation in results.xprs.</li>
+   		</ul></p> 
+         </p>
+         <h2>11.19.2012 &bull; eXpress manuscript now available online!</h2>
+          <p>The eXpress manuscript will appear in the January issue of Nature Methods. However, an early
+          online version is now available on the Nature Methods website:
+          <ul><p>Roberts A and Pachter L (2012).
+	  		     <b>Streaming fragment assignment for real-time analysis of sequencing experiments.</b>
+	  		     <i>Nature Methods.</i>
+	  		     &rarr;<a href=http://dx.doi.org/10.1038/nmeth.2251>doi:10.1038/nmeth.2251</a></p></ul>
+          </p>
+          <h2>10.19.2012 &bull; eXpress 1.2.1 released</h2>
+          <p>This release includes changes to the available options as well as patches for the bugs listed below.
+   		  <ul>
+   		<li>Made some previously hidden options available as "Advanced Options". See the <a href="manual.html#usage">Manual</a> for more details.</li>
+		  <li>Fixed a rare issue affecting indels whereby indels were not properly being penalized in alignment likelihoods. Added a maximum allowed indel size along with geometrically distributed prior on indel length probabilities to correct this issue. See <tt>--max-indel-size</tt> argument in the <a href="manual#usage">Manual</a> for more details.</li>
+   		<li>Fixed a bug leading to incorrect learning of mismatch parameters (introduced in 1.2.0).</li>
+   		<li>Fixed a bug leading to a segfault when using single-end reads (introduced in 1.2.0).</li>
+   		<li>Added missing CMake configuration file to source tarball.</li>
+   		</ul></p>
+   		  
+          <h2>09.27.2012 &bull; eXpress 1.2.0 released</h2>
+          <p>This maintenance release includes major refactoring and patches for the bugs listed below.
+   		  <ul>
+   		<li>Refactored fragment objects for readability and performance improvements.</li>
+   		<li>Fully completed source documentation and improved formatting style.</li>
+		  <li>Now ignores paired-end fragments where the upstream read is reverse complemented and/or the downstream read is not.</li>
+      <li>Fixed a bug where average bias was computed incorrectly, affecting estimation accuracy.</li>
+		  <li>Fixed a bug where soft clipping was ignored, leading to a segfault.</li>
+		  <li>Fixed a bug where very long reads (> 200 bp) would cause a segfault.</li>
+		  <li>Fixed a bug where small fragment length standard deviations could lead to NaNs.</li>
+   		  </ul></p>
+   		  <p>Thanks to the users who reported and helped fix these bugs.</p>
+          <h2>06.30.2012 &bull; eXpress Walkthrough</h2>
+          <p><a href=http://www.eecs.berkeley.edu/~pimentel/>Harold Pimentel</a> has made an excellent walkthrough for today's <a href=http://qb3.berkeley.edu/qb3/starseq/>*Seq I Meeting</a>, which is available <a href=http://lmcb.wikispaces.com/eXpress+Walkthrough>here</a>. New users should have a look if you need help getting started with eXpress!</p>
+ 
+ 		  <h2>06.24.2012 &bull; eXpress 1.1.1 released</h2>
+          <p>This release includes patches for the minor bugs listed below.
+   		  <ul>
+		  <li>The stand-specific modes (<tt>--fr-stranded</tt> and <tt>--rf-stranded</tt>) were not being enabled by the command-line arguments. This has been corrected.</li>
+   		  <li>In rare cases, NaN and negative counts were being output in results.xprs. This issue has also been corrected.</li>
+		  <li>Linux build is now compiled on CentOS 5 with GCC 4.4.6 for improved compatibility with older installations.</li>
+   		  </ul></p>
+   		  <p>Thanks to the users who reported and helped fix these bugs.</p>
+          <h2>05.22.2012 &bull; eXpress 1.1.0 Released</h2>
+	  <p>This release brings an important new feature allowing users to combine reads from a single sample sequenced from different library prepartions or using different reads lengths.  Please read the <a href="faq#seppreps">FAQ</a> and <a href="manual#sam">Manual</a> for details on how to use this feature.</p>
+	  <p>The Bowtie2 "bug" we reported previously was actually due to mistakes made by several users in sorting files.  Output from Bowtie and Bowtie2 are already in the correct order with alignments grouped by read and do not need to be re-sorted.  If you are using a different aligner, you <emph>may</emph> need to sort the alignments.  See the <a href="manual.html#sam">Manual</a> for more details and sorting commands. To help avoid these issues in the future, we have implemented a method that will detect improperly ordered alignments in input files (see Release Notes below).</p>
+<p><b>Release Notes:</b>
+<ul>
+<li>Added the ability to combine reads sequenced from different library preparations or using different read lengths.  See the <a href="faq.html#seppreps">FAQ</a> for important details if using this feature.</li>
+<li>Added a method to detect improperly ordered SAM/BAM files.</li>
+<li>Fixed bug where it was not possible to enable additional-batch mode.</li>
+</ul></p>
+	  <h2>05.01.2012 &bull; Follow-up for Bowtie2 users</h2>
+          <p><b>UPDATE (05.22.2012):</b> It has been discovered that this "bug" was not related to Bowtie2 but was due to users imporoperly sorting their alignment files.  See the 05.22.2012 announcement for more details.</p>
+<p>Some users have asked questions about the Bowtie2 bug we reported yesterday.  We have developed a way to test if this bug will affect your results and by how much.  You should run one of the pairs of commands below (depending on if you file is in SAM or BAM format).  The first command prints how many reads (+ header lines) eXpress will see due to the bug and the second command prints how many reads (+ header lines) eXpress would see without the bug (the correct number).  The difference between the two will tell you how many reads are being "double counted" by eXpress.  If this number is relatively small, there is no cause for alarm.  If it is large, you should sort your file and rerun eXpress.  The commands to do this sorting can be found in the <a href=manual.html#sam>Manual</a>.  Please let us know if you have any further questions about this by emailing us at <a mailto:ask.xprs@gmail.com>ask.xprs@gmail.com</a>.  
+          <h4>Test commands:</h4>
+		  <p>(w/ SAM files)
+		  <ol><li><pre class="sc"><code>cut -f1 hits.sam | uniq | sort | wc -l
+          <br>cut -f1 hits.sam | uniq | sort | uniq | wc -l</code></pre></li></ol>
+ 		  </p>
+ 		  <p>(w/ BAM files)
+		  <ol><li><pre class="sc"><code>samtools view hits.bam | cut -f1 | uniq | sort | wc -l
+		  <br>samtools view hits.bam | cut -f1 | uniq | sort | uniq | wc -l</code></pre></li></ol>
+          <h2>04.30.2012 &bull; Warning for Bowtie2 users (UPDATED)</h2>
+          <p><b>UPDATE (05.22.2012):</b> It has been discovered that this "bug" was not related to Bowtie2 but was due to users imporoperly sorting their alignment files.  See the 05.22.2012 announcement for more details.</p>
+		  <p>Due to a bug in Bowtie2, the alignments for a given read aren't guaranteed to be in a consecutive block in the SAM output.  Therefore, you must use the --reorder option until the bug is fixed or sort your alignment file using the commands in the <a href=http://bio.math.berkeley.edu/eXpress/manual.html#sam>Manual</a>.</p>
+		  <p>This bug will cause eXpress to produce incorrect results with no errors or notifications.</p>
+          <h2>04.08.2012 &bull; eXpress 1.0.0 released</h2>
+          <p>We are happy to announce the release of eXpress 1.0.0 following numerous tests on simulated and real data, and improvements based on feedback from early users.</p>
+          <p><b>Release Notes:</b>
+   		  <ul>
+		  <li>New output format (see <a href="manual.html#output">Manual</a>)
+   		  <li>Indel support including mappings made with <a href="http://bowtie-bio.sourceforge.net/bowtie2">Bowtie2</a>.</li>
+		  <li>Bias model improved</li>
+		  <li>Minor bug fixes and speed increases</li>
+   		  </ul></p>
+          <h2>02.16.2012 &bull; eXpress 0.9.5 BETA released</h2>
+          <p><b>Release Notes:</b>
+   		  <ul>
+   		  <li>Numerous speed improvements.</li>
+   		  <li>Reduced memory requirements.</li>
+   		  <li>Improved bias model.</li>
+   		  <li>Re-added effective count fields to output.</li>
+   		  <li>Renamed "post_count_mean" field to "post_count_mode".</li>
+   		  </ul></p>
+          <h2>01.05.2012 &bull; eXpress 0.9.4 BETA released</h2>
+          <p><b>Release Notes:</b>
+   		  <ul>
+   		  <li>Greatly increased speed of BAM parsing (thanks to improvements in BamTools)</li>
+   		  <li>Fixed bug where software stalled on first additional EM round in some cases</li>
+   		  <li>--output-alignments option has been renamed to --output-align-prob</li>
+   		  <li>Added new option (--output-align-samp) that outputs one alignment for each fragment, sampled at random based on the alignment likelihood
+   		  <li>Additional EM rounds now defaults to 0 (instead of 1)</li>
+   		  <li>Removed effective count fields (which can be easily calculated from other fields)</li>
+   		  </ul></p>
+          <h2>10.19.2011 &bull; eXpress 0.9.3 BETA released</h2>
+          <p><b>Release Notes:</b>
+   		  <ul>
+   		  <li>Windows binary now available!</li>
+   		  <li>Added automatic second round of EM (when input comes from file instead of streaming) that improves results</li>  
+   		  <li>Added new option (--output-alignments) that outputs the alignments in SAM/BAM format along with the probabilistic assignment for each multi-hit</li>
+   		  <li>No more hash collisions!</li>
+   		  <li>Fixed bug in polytope projection that led to mean posterior counts outside of the interval between unique and total counts</li>
+          </ul></p>
+          <h2>10.07.2011 &bull; A note to Windows users</h2>
+          <p>While the eXpress code is compatible with Windows, some of its dependencies (Boost, BamTools) have made the compilation on Windows non-trivial.  We know that many users wish to run eXpress on their Window's laptop or desktop since it requires so few resources. We are working to make this a reality and hope to have a Windows 7 binary available in the coming weeks.</p>
+          <p>If you have successfully built eXpress on Windows, please share your magic with us at <a href=mailto:ask.xprs@gmail.com>ask.xprs@gmail.com</a>.</p>
+          
+          <h2>09.27.2011 &bull; eXpress 0.9.2 BETA released</h2>
+          <p><b>Release Notes:</b>
+   		  <ul>
+   		  <li>Added eff_count_mean and eff_count_var columns to report bias-corrected counts</li>
+   		  <li>Fixed bug in polytope projection that led to mean posterior counts outside of the interval between unique and total counts</li>
+          <li>Fixed compatibility issue with Linux binary</li>
+          </ul></p>
+
+           <h2>09.14.2011 &bull; eXpress 0.9.1 BETA released</h2>
+          <p><b>Release Notes:</b>
+   		  <ul>
+   		  <li>Fixed bug relating to bias estimation in single-end reads</li>
+          <li>Added variance-covariance file (varcov.xprs)</li>
+          <li>Added parameter (bias, fld, errors, etc.) output file (params.xprs) </li>
+          <li>Added FPKM confidence intervals to results.xprs</li>
+          <li>Column name changes (est_counts->post_counts_mean, est_counts_var->post_counts_var) in results.xprs</li>
+          <li>Estimated (mean posterior) counts are now guaranteed to lay between the total and unique counts using polytope projection</li>
+          </ul></p>
+		  <h2>09.01.2011 &bull; eXpress 0.9.0 BETA released</h2>
+          <p>We are pleased to announce the release of the first public beta of
+      eXpress! The software is freely available under the <a href=http://www.opensource.org>OSI</a>-approved <a href=http://www.opensource.org/licenses/artistic-license-2.0.php>Artistic License 2.0</a>.  
+      <br /><br />Please send us any comments, suggestions, and bug fixes to <a href=mailto:ask.xprs@gmail.com>ask.xprs@gmail.com</a>.</p>
+          </div> 
+        <div class="corner-content-1col-bottom"></div>                               
+      </div>
+                
+       <!-- C.2 SUBCONTENT -->
+      <div class="subcontent">
+      
+         <!-- SUBCONTENT CELL -->
+        <div class="corner-subcontent-top"></div>                        
+        <div class="subcontent-box">
+          <h1>Download</h1>                    
+          <h5>Current Release</h5>
+          <p>eXpress 1.5.0
+          <br />&rarr; <a href="downloads/express-1.5.1/express-1.5.1-macosx_x86_64.tgz" onClick="_gaq.push(['_trackEvent', 'Downloads', 'Mac', 'home-side']);" target="_blank">Mac OS X (64-bit) Binary</a>
+          <br />&rarr; <a href="downloads/express-1.5.1/express-1.5.1-linux_x86_64.tgz" onClick="_gaq.push(['_trackEvent', 'Downloads', 'Linux', 'home-side']);" target="_blank">Linux (64-bit) Binary</a>
+          <br />&rarr; <a href="downloads/express-1.5.1/express-1.5.1-win32_x86_64.zip" onClick="_gaq.push(['_trackEvent', 'Downloads', 'Windows', 'home-side']);" target="_blank">Windows (64-bit) Binary</a>
+          <br />&rarr; <a href="downloads/express-1.5.1/express-1.5.1-src.tgz" onClick="_gaq.push(['_trackEvent', 'Downloads', 'Source', 'home-side']); " target="_blank">Source</a>
+          <h5>Previous Versions</h5>
+          <p>&rarr; <a href="downloads" onClick="_gaq.push(['_trackEvent', 'Downloads', 'Previous','home-side']);">View All</a>
+
+          
+        </div>  
+        <div class="corner-subcontent-bottom"></div>
+
+	<!-- SUBCONTENT CELL -->
+        <div class="corner-subcontent-top"></div>                        
+        <div class="subcontent-box">
+          <h1>Support</h1>
+          
+          <h5>Email your questions to <a href="mailto:ask.xprs@gmail.com">ask.xprs@gmail.com</a></h5>
+          <h5>Share with other users on our <a href="https://groups.google.com/d/forum/express-users">User Forum</a>
+          <h5>Sign Up for Announcements:<div class="mailform">
+          	<form action="http://groups.google.com/group/express-users/boxsubscribe" method="get">
+          		<fieldset>
+          		<input type="field" name="email" class="field" value="Enter Email..." onfocus='javascript: this.value = ""'>
+          		<input type="submit" name="sub" class="button" value="Subscribe">
+          		</fieldset>
+          	</form>
+          </div></h5>
+
+        </div> 
+        <div class="corner-subcontent-bottom"></div>
+
+        <!-- SUBCONTENT CELL -->
+        <div class="corner-subcontent-top"></div>                        
+        <div class="subcontent-box">
+          <h1>Contributors</h1>                    
+          <h5>Adam Roberts</h5>
+          <p>&rarr;<a href="http://cs.berkeley.edu/~adarob/">Homepage</a></p>
+          <h5>Lior Pachter</h5>
+          <p>&rarr;<a href="http://math.berkeley.edu/~lpachter/">Homepage</a></p>
+        </div>      
+        <div class="corner-subcontent-bottom"></div>
+
+        <!-- SUBCONTENT CELL -->
+        <div class="corner-subcontent-top"></div>                        
+        <div class="subcontent-box">
+          <h1>Publications</h1>                
+	  		<ul>
+	  		<li>Roberts A (2013). <b>Thesis: Ambiguous fragment assignment for high-throughput sequencing experiments.</b>
+	  		<i>EECS Department, University of California, Berkeley.</i>
+	  		<br />&rarr;<a href=http://www.eecs.berkeley.edu/Pubs/TechRpts/2013/EECS-2013-177.html>UCB/EECS-2013-177</a></li>
+	  		<li>Roberts A and Pachter L (2013). <b>Streaming fragment assignment for real-time analysis of sequencing experiments.</b>
+	  		<i>Nature Methods.</i>
+	  		<br />&rarr;<a href=http://dx.doi.org/10.1038/nmeth.2251>doi:10.1038/nmeth.2251</a></li>
+        <li>Roberts A, Trapnell C, Donaghey J, Rinn JL, Pachter L (2011).
+        <b>Improving RNA-Seq expression estimates by correcting for fragment bias.</b>
+        <i>Genome Biology.</i>
+        <br />&rarr;<a href="http://genomebiology.com/2011/12/3/R22/">doi:10.1186/gb-2011-12-3-r22</a></font></li>
+
+	  		</ul>
+        </div> 
+        <div class="corner-subcontent-bottom"></div>
+
+ 	 </div>
+    </div>
+      
+    <!-- D. FOOTER -->      
+    <div class="footer">
+      <p>Copyright &copy; 2011 Adam Roberts&nbsp;&nbsp;|&nbsp;&nbsp;All Rights Reserved</p>
+      <p class="credits">Design by <a href="http://1234.info/" title="Designer Homepage">1234.info</a> | Modified by <a href="http://cs.berkeley.edu/~adarob/">Adam Roberts</a> | <a href="http://validator.w3.org/check?uri=referer" title="Validate XHTML code">XHTML 1.0</a> | <a href="http://jigsaw.w3.org/css-validator/" title="Validate CSS code">CSS 2.0</a></p>
+      <br />
+      <p>The eXpress project was funded in part by an NSF graduate fellowship to Adam Roberts and NIH grant 1R01HG006129-01</p>
+    </div>
+    <div class="corner-page-bottom"></div>        
+  </div> 
+  
+</body>
+</html>
+
+
+
